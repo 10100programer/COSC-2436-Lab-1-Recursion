@@ -3,7 +3,7 @@ Comsci.h
 Standard header to be included with programs created in Computer Science related classes
 Version	:1.2b
 Created	:April		25th 2015
-Modified:January	29th 2017
+Modified:January	31th 2017
 */
 
 //#include "stdafx.h"
@@ -17,7 +17,37 @@ Modified:January	29th 2017
 #include <cmath>
 #include <fstream>
 #define spacer "|------------------------------------------------------------------------------|"
+#define newline "\n"
+#define newlineS "\n "
+std::string splashwrap(std::string input)// need to fix drift issue
+{
+	int c = 22;
+	if (input.length() < 62)
+	{
+		return input;
+	}
+	if (input.length() > 62 && input.length()<141)
+	{
 
+		input.insert(61, newlineS);
+		return input;
+	}
+	else
+	{
+		input.insert(61, newlineS);
+		int instancecnt = 0;
+		int size22 = input.length() - 61;
+		int ctr2234 = size22 / 80;
+		while (ctr2234>0)
+		{
+			int spot = (61 + (80 * ctr2234));
+			input.insert(spot, newlineS);
+			ctr2234--;
+			instancecnt++;
+		}
+	}
+	return input;
+}
 int splash(std::string title = "Untitled", std::string purpose = "N/A") //splash screen for programs
 {
 	
@@ -25,7 +55,7 @@ int splash(std::string title = "Untitled", std::string purpose = "N/A") //splash
 	std::cout << spacer;
 	std::cout << " Using Comsci.h \n";
 	std::cout << " Program Name	: "<< title << std::endl;
-	std::cout << " Description	: " << purpose << std::endl;;
+	std::cout << " Description	: " << splashwrap(purpose) << std::endl;;
 	std::cout << spacer<<std::endl;
 	//std::cout << "********************************************************************\n";
 		return 0;
