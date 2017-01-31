@@ -7,20 +7,15 @@ float power(float a, int b);// a is number and b is power of
 float flip(float a);
 void lab15_1();
 void mainmenu();
-void lab15_2();
+void lab15_2_1();
+void lab15_2_2();
+void lab15_2_3();
 void starsloop(int cts);
 void starsrecursion(int cts);
 std::string starprt(int num);
 bool palindrome(std::string input, std::string buffer = "", int count = 0, bool test = false);
 int main()
 {	
-	starsloop(4);
-	starsrecursion(4);
-
-	if (palindrome("radar") == true)
-		std::cout << "yes";
-	else
-		std::cout << "no";
 	pause("STARTS");
 	mainmenu();
 	pause("Program execution Terminated press any key to exit");
@@ -92,21 +87,57 @@ void mainmenu()
 	while (true)
 	{
 		std::string name;
+		system("cls");
 		color("blue");
-		std::cout << centertext("***Lab 1:  Recursion***") << std::endl;
-		std::cout << centertext("***Please Make A Selction***") << std::endl;
+		//std::cout << centertext("***Lab 1:  Recursion***") << std::endl;
+		//std::cout << centertext("***Please Make A Selction***") << std::endl;
+		std::cout << spacer;
+		std::cout << "|                                  Main Menu                                   |\n";
+		std::cout << spacer;
+		std::cout << std::endl;
+		std::cout << "+---+-------+------------------------------------------------------------------+";
+		std::cout << "|Key|Program|                           Description                            |";
+		std::cout << "+===+=======+==================================================================+";
+		std::cout << "|*A*|lab15_1  |Recursive power program\n";
+		std::cout << "|*B*|lab15_2_1|Loop star program\n";
+		std::cout << "|*C*|lab15_2_2|Recursive star program\n";
+		std::cout << "|*D*|lab15_2_3|Palindrome detection program\n";
+		std::cout << "|*E*|lab15_2_3|Palindrome detection program\n";//update when this part is finished
+		std::cout << "\\______________________________________________________________________________/";
+		std::cout << "Type the letter of the program you want, or type exit to close this program\n";
+		std::cout << "Lab15 :>";
 		std::getline(std::cin, name);
 		if (name == "a" || name == "A") 
 		{
+			std::system("cls");
+			color("green");
 			lab15_1();
 		}
-		else if(true)
+		if (name == "b" || name == "B")
+		{
+			std::system("cls");
+			color("green");
+			lab15_2_1();
+		}
+		if (name == "c" || name == "C")
+		{
+			std::system("cls");
+			color("green");
+			lab15_2_2();
+		}
+		if (name == "d" || name == "D")
+		{
+			std::system("cls"); 
+			color("green");
+			lab15_2_3();
+		}
+		if(name =="exit")
 		{
 			break;
 		}
 	}
 }
-void lab15_1()
+void lab15_1()//recursive power function
 {
 	splash("COSC 2436 Lab 1:  Recursion", "Lab 15.1 Designing a Recursive Algorithm for a Power Function");
 	int ans = 1;
@@ -143,8 +174,54 @@ void lab15_1()
 	The Answer of 2^16 is 65536
 	Press Any Key to try Again or -12 to exit
 	*/
-}
-void lab15_2()
+}//
+void lab15_2_1()//loop star program
 {
-
+	splash("loop star program", "Lab 15.2 Steps: Displaying a Pattern");
+	while (true) 
+	{
+		std::cout << "Please Enter The Number of stars you would like or -12 or to goto main menu" << std::endl << ":>";
+		int starcount;
+		std::cin >> starcount;
+		if (starcount == -12)
+			return;
+		else
+		{
+			starsloop(starcount);
+			std::cout << spacer;
+		}
+	}
+}
+void lab15_2_2()//recursive star program
+{
+	splash("recursive star program", "Lab 15.2 Steps: Displaying a Pattern");
+	while (true)
+	{
+		std::cout << "Please Enter The Number of stars you would like or -12 or to goto main menu" << std::endl << ":>";
+		int starcount;
+		std::cin >> starcount;
+		if (starcount == -12)
+			return;
+		else
+		{
+			starsrecursion(starcount);
+			std::cout << spacer;
+		}
+	}
+}
+void lab15_2_3()//Palindrome
+{
+	splash("Palindrome detection program", "Lab 15.2 Steps: Recursive Palindrome");
+	while (true)
+	{
+		std::cout << "Please Enter The word you would like  to see if it is a Palindrome or -12 or to goto main menu" << std::endl << ":>";
+		std::string word;
+		std::getline(std::cin, word);
+		if (word == "-12")
+			return;
+		if (palindrome(word) == true)
+			std::cout << word << " is a Palindrome" << std::endl << std::endl;
+		else
+			std::cout << "No " << word << " is not a Palindrome" << std::endl << std::endl;
+	}
 }
