@@ -9,10 +9,12 @@ void lab15_1();
 void mainmenu();
 void lab15_2();
 void starsloop(int cts);
+void starsrecursion(int cts);
 std::string starprt(int num);
 int main()
 {	
 	starsloop(4);
+	starsrecursion(4);
 	pause("STARTS");
 	mainmenu();
 	pause("Program execution Terminated press any key to exit");
@@ -33,6 +35,15 @@ float power(float a, int b)
 float flip(float a)
 {
 	return 1 / a;
+}
+void starsrecursion(int cts)
+{
+	if (cts == 0)
+	{
+		return;
+	}
+	std::cout<<starprt(cts) <<std::endl;
+	return starsrecursion(cts - 1);
 }
 void starsloop(int cts)
 {
