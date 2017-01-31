@@ -7,8 +7,13 @@ float power(float a, int b);// a is number and b is power of
 float flip(float a);
 void lab15_1();
 void mainmenu();
+void lab15_2();
+void starsloop(int cts);
+std::string starprt(int num);
 int main()
 {	
+	starsloop(4);
+	pause("STARTS");
 	mainmenu();
 	pause("Program execution Terminated press any key to exit");
 	return 0;
@@ -28,6 +33,24 @@ float power(float a, int b)
 float flip(float a)
 {
 	return 1 / a;
+}
+void starsloop(int cts)
+{
+	while (cts > 0) 
+	{
+		std::cout << starprt(cts) << std::endl;
+		cts--;
+	}
+}
+std::string starprt(int num)
+{
+	std::string str;
+	while (num > 0)
+	{
+		str = str + "*";
+		num--;
+	}
+	return str;
 }
 void mainmenu()
 {
@@ -86,4 +109,8 @@ void lab15_1()
 	The Answer of 2^16 is 65536
 	Press Any Key to try Again or -12 to exit
 	*/
+}
+void lab15_2()
+{
+
 }
