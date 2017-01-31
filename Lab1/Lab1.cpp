@@ -11,10 +11,16 @@ void lab15_2();
 void starsloop(int cts);
 void starsrecursion(int cts);
 std::string starprt(int num);
+bool palindrome(std::string input, std::string buffer = "", int count = 0, bool test = false);
 int main()
 {	
 	starsloop(4);
 	starsrecursion(4);
+
+	if (palindrome("radar") == true)
+		std::cout << "yes";
+	else
+		std::cout << "no";
 	pause("STARTS");
 	mainmenu();
 	pause("Program execution Terminated press any key to exit");
@@ -35,6 +41,23 @@ float power(float a, int b)
 float flip(float a)
 {
 	return 1 / a;
+}
+bool palindrome(std::string input, std::string buffer,int count,bool test)
+{
+
+	if (input.length() == 0)//default case
+		return false;
+	int length = input.length();
+	buffer = buffer + input[length - count -1];
+	//pause("STEP");
+	if (buffer.length() == input.length())
+	{
+		if (buffer == input)
+			return true;
+		else
+			return false;
+	}
+	return palindrome(input, buffer, count+1,test);
 }
 void starsrecursion(int cts)
 {
