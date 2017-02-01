@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "Comsci.h"
+#include <time.h>
 float power(float a, int b);// a is number and b is power of
 float flip(float a);
 void lab15_1();
@@ -10,13 +11,15 @@ void mainmenu();
 void lab15_2_1();
 void lab15_2_2();
 void lab15_2_3();
+void lab15_3_1();
+void lab15_3_2();
 void starsloop(int cts);
 void starsrecursion(int cts);
 std::string starprt(int num);
+double fibonacci_loop(double n);
 bool palindrome(std::string input, std::string buffer = "", int count = 0, bool test = false);
 int main()
 {	
-	pause("STARTS");
 	mainmenu();
 	pause("Program execution Terminated press any key to exit");
 	return 0;
@@ -36,6 +39,41 @@ float power(float a, int b)
 float flip(float a)
 {
 	return 1 / a;
+}
+double fibonacci_loop(double n)//use positive double
+{
+	if (n < 0)//check for positive number
+		return -9;
+	if (n == 0)
+		return 0;
+	if (n == 1)
+		return 1;
+	n = n - 1;
+	double a = 0;
+	double b = 1;
+	double c;
+	c = a + b;
+	while (n>0)
+	{
+		c = a + b;
+		a = b;
+		b = c;
+		n--;
+	}
+	return c;
+}
+double fibonacci_rec(double n)//use positive double
+{
+	if (n < 0)//check for positive number
+		return -9;
+	if (n == 0)
+		return 0;
+	if (n == 1)
+		return 1;
+	else
+	{
+		return fibonacci_rec(n - 1) + fibonacci_rec(n - 2);
+	}
 }
 bool palindrome(std::string input, std::string buffer,int count,bool test)
 {
@@ -102,7 +140,8 @@ void mainmenu()
 		std::cout << "|*B*|lab15_2_1|Loop star program\n";
 		std::cout << "|*C*|lab15_2_2|Recursive star program\n";
 		std::cout << "|*D*|lab15_2_3|Palindrome detection program\n";
-		std::cout << "|*E*|lab15_2_3|Palindrome detection program\n";//update when this part is finished
+		std::cout << "|*E*|lab15_3_1|fibonacci program Loop\n";//update when this part is finished
+		std::cout << "|*F*|lab15_3_2|fibonacci program Recursive\n";//update when this part is finished
 		std::cout << "\\______________________________________________________________________________/";
 		std::cout << "Type the letter of the program you want, or type exit to close this program\n";
 		std::cout << "Lab15 :>";
@@ -131,9 +170,21 @@ void mainmenu()
 			color("green");
 			lab15_2_3();
 		}
+		if (name == "e" || name == "E")
+		{
+			std::system("cls");
+			color("green");
+			lab15_3_1();
+		}
+		if (name == "f" || name == "F")
+		{
+			std::system("cls");
+			color("green");
+			lab15_3_2();
+		}
 		if(name =="exit")
 		{
-			break;
+			return;
 		}
 	}
 }
@@ -223,5 +274,35 @@ void lab15_2_3()//Palindrome
 			std::cout << word << " is a Palindrome" << std::endl << std::endl;
 		else
 			std::cout << "No " << word << " is not a Palindrome" << std::endl << std::endl;
+	}
+}
+void lab15_3_1()
+{
+	double test = 0;
+	while (test != -12)
+	{
+		std::cout << "Please enter a number or enter -12 to exit" << std::endl << ":>";
+		std::cin >> test;
+		clock_t start = clock();
+		std::cout << std::endl << fibonacci_loop(test) << std::endl;
+		clock_t end = clock();
+		std::cout << "Time elapsed: " <<((double)end - start) / CLOCKS_PER_SEC;
+
+	}
+}
+void lab15_3_2()
+{
+	double test = 0;
+	while (test != -12)
+	{
+		std::cout << "Please enter a number enter or -12 to exit" << std::endl << ":>";
+		std::cin >> test;
+
+		if (test == -12)
+			return;
+		clock_t start = clock();
+		std::cout << std::endl << fibonacci_rec(test) << std::endl;
+		clock_t end = clock();
+		std::cout << "Time elapsed: " << ((double)end - start) / CLOCKS_PER_SEC;
 	}
 }
