@@ -130,12 +130,12 @@ void mainmenu()
 		//std::cout << centertext("***Lab 1:  Recursion***") << std::endl;
 		//std::cout << centertext("***Please Make A Selction***") << std::endl;
 		std::cout << spacer;
-		std::cout << "|                                  Main Menu                                   |\n";
+		std::cout << "|                                  Main Menu                                   |";
 		std::cout << spacer;
 		std::cout << std::endl;
-		std::cout << "+---+-------+------------------------------------------------------------------+";
-		std::cout << "|Key|Program|                           Description                            |";
-		std::cout << "+===+=======+==================================================================+";
+		std::cout << "+---+---------+-----------------------------------------------------------------+";
+		std::cout << "|Key| Program |                           Description                            |";
+		std::cout << "+===+=========+================================================================+";
 		std::cout << "|*A*|lab15_1  |Recursive power program\n";
 		std::cout << "|*B*|lab15_2_1|Loop star program\n";
 		std::cout << "|*C*|lab15_2_2|Recursive star program\n";
@@ -185,6 +185,11 @@ void mainmenu()
 		if(name =="exit")
 		{
 			return;
+		}
+		else
+		{
+			std::cout << newline << "Please Enter A,B,C,D,E, or F" << newline;
+			pause();
 		}
 	}
 }
